@@ -1,0 +1,55 @@
+<%= form_with model: @user, local: true do |form| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+        <h2>
+            <%= pluralize(@user.errors.count, "error") %> prohibited
+            this user profile from being saved:
+        </h2>
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5>Update User Profile</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= form.label :username %><br>
+                        <%= form.text_field :username, class: 'form-control' %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= form.label :password %><br>
+                        <%= form.password_field :password, class: 'form-control' %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= form.label :firstname %><br>
+                        <%= form.text_field :fname, class: 'form-control' %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= form.label :lastname %><br>
+                        <%= form.text_field :lname, class: 'form-control' %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= form.label :birthday %><br>
+                        <%= form.date_select :birthday, {order: [:month, :day, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100} %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= form.label :address %><br>
+                        <%= form.text_field :address, class: 'form-control' %>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <%= form.submit "Update Profile", class: "btn btn-success btn-sm" %>
+                <%= link_to "Cancel", '/welcome', class: "btn btn-danger btn-sm" %>
+            </div>
+        </div>
+    </div>
+<% end %>

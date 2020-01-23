@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Freelance</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+    <body>
+        <% if logged_in? %>
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-light bg-dark text-white">
+                    <div class="col-9">
+                        <h3>BLOG</h3>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-inline float-right">
+                            <label>Logged in as</label>&nbsp;<%=  current_user.fname ? current_user.fname : current_user.username %> |&nbsp;
+                            <%= link_to 'Logout', 'logout', method: :get, id: "logout" %>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb top_menu">
+                    <li class="breadcrumb-item"><%= link_to 'Home', welcome_path %></li>
+                    <li class="breadcrumb-item"><%= link_to 'Articles', articles_path %></li>
+                    <li class="breadcrumb-item"><%= link_to 'Create Article', new_article_path %></li>
+                </ol>
+            </nav>
+        </div>
+        <% end %>
+        <%= yield %>
+    </body>
+</html>

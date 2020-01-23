@@ -1,0 +1,40 @@
+<% if logged_in? %>
+<div class="container content">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-6">
+                <h4>Article #<%= @article.id %></h4>
+                </div>
+                <div class="col-6 text-right">
+                    <%= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-success btn-sm' %>
+                    <%= link_to 'Back to list', articles_path, class: 'btn btn-danger btn-sm' %>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="article">
+                <h5>
+                    <strong>Title:</strong>
+                    <span><%= @article.title %></span>
+                </h5>
+                <strong>Text:</strong>
+                <%= @article.context %>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-6 add_a_comment form-control">
+                    <h5>Add a comment</h5>
+                    <hr>
+                    <%= render 'comments/form' %>
+                </div>
+                <div class="col-6 comments form-control">
+                    <h5>Comments</h5>
+                    <hr>
+                    <%= render @article.comments %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%end%>

@@ -1,0 +1,39 @@
+<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+    <% if @comment.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@comment.errors.count, "error") %> prohibited
+                this comment profile from being saved:
+            </h2>
+            <ul>
+                <% @comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5>Edit Comment of <%= @comment.commenter%></h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <%= form.label :commenter %><br>
+                        <%= form.text_field :commenter, class: 'form-control' %>
+                    </div>
+                    <div class="col-md-12">
+                        <%= form.label :body %><br>
+                        <%= form.text_area :body, class: 'form-control' %>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <%= form.submit "Submit Edit", class: "btn btn-success btn-sm" %>
+                <%= link_to "Cancel", article_path(@article), class: "btn btn-danger btn-sm" %>
+            </div>
+        </div>
+    </div>
+<% end %>

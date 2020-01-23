@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-6">
+                <h5>User Profile</h5>
+                </div>
+                <div class="col-6 text-right">
+                    <% if current_user.lname != nil && current_user.fname != nil && current_user.birthday != nil && current_user.address != nil %>
+                        <%= link_to 'Edit Profile', edit_user_path(current_user.id), class: "btn btn-info btn-sm"%>
+                    <% end %>                
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <% if current_user.lname == nil && current_user.fname == nil && current_user.birthday == nil && current_user.address == nil %>
+                <%= link_to 'Let\'s set up your account now! Click here.', edit_user_path(current_user.id) %>
+            <% else %>
+                <label>Name:</label> <%= current_user.lname%>, <%= current_user.fname%><br/>
+                <label>Birthday: </label> <%= current_user.birthday.strftime("%B %d, %Y") %><br/>
+                <label>Address: </label> <%= current_user.address %>
+            <% end %>
+        </div>
+    </div>
+</div>

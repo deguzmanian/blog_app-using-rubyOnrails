@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">SIGN IN</h5>
+                    <%= form_tag '/login' do %>
+                    <div class="form-label-group">
+                        <%= text_field_tag :username, "", class: 'form-control'%>
+                        <%= label_tag :username%>
+                    </div>
+                    <div class="form-label-group">
+                        <%= password_field_tag :password, "", class: 'form-control'%>
+                        <%= label_tag :password%>
+                    </div>
+                    <%= submit_tag "Login", class: "btn btn-md btn-primary btn-block text-uppercase"%>
+                    <hr>
+                    <div class="text-center">
+                        <%= link_to "No account yet? Sign Up now!", 'create_account', method: :get%>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

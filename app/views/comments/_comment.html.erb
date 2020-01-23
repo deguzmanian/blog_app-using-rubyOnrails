@@ -1,0 +1,13 @@
+<% if comment.commenter != nil && comment.body != nil%>
+    <div class="comment-sec">
+        <strong>Username:</strong>
+        <%= comment.commenter %>
+        <br/>
+        <strong>Comment:</strong>
+        <%= comment.body %>
+        <br/>
+    <%= link_to 'Edit Comment', [comment.article, comment]%> |
+    <%= link_to 'Delete Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }
+    %>
+    </div>
+<% end %>

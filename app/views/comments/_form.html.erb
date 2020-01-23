@@ -1,0 +1,8 @@
+<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+    <%= form.label "Username" %><br>
+    <%= form.text_field :commenter, class: 'form-control' %>
+    <%= form.label "Comment" %><br>
+    <%= form.text_area :body, class: 'form-control', style: "resize: none" %>
+    <br>
+    <%= form.submit "Comment", class: "btn btn-sm btn-info btn-block float-right" %>
+<% end %>
