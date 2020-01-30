@@ -1,32 +1,22 @@
-<div class="container content">
-    <table class="table table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Author</th>
-                <th class="text-center" colspan="3">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @articles.each do |article| %>
-                <tr>
-                    <td><%= article.title %></td>
-                    <td><%= article.context %></td>
-                    <td><%= article.user.fname%>
-                    <td><%= link_to 'Show', article_path(article) %></td>
-                    <% if article.user_id == current_user.id %>
-                        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-                        <td><%= link_to 'Delete', article_path(article),
-                            method: :delete,
-                            data: { confirm: 'Are you sure?' } %>
-                            </td>
-                    <% else %>
-                        <td></td>
-                        <td></td>
-                    <% end %>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+<div class="container-fluid">
+    <h1 class="mt-4"></h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">Dashboard</li>
+        <li class="breadcrumb-item active">Articles</li>
+    </ol>
+    <% @articles.each do |article| %>
+    <div class="articles">
+        <div class="article_title">
+            <strong> <%= article.title %> </strong> - <%= article.user.fname %>
+        </div>
+        <div class="article_content">
+            <span> <%= article.context %> </span>
+        </div>
+        <hr>
+        <div class="article_actions">
+            <%= link_to 'Show', article_path(article) %> | <%= link_to 'Edit', edit_article_path(article) %> | <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+    </div>
+    <br/>
+    <% end %>
 </div>

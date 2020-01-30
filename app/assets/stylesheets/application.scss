@@ -14,14 +14,44 @@
  *= require_self
  */
 @import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+@import "font-awesome";
+
+body {
+    font-family: 'Open Sans', sans-serif; 
+    h3 {
+        font-weight: bold;
+    }
+
+    .card-body {
+        font-size: 14px;
+    }
+}
 
 #logout {
-    color:#fff;
-    text-decoration: none;
+    float: right;
+    a {
+        color:#fff;
+        text-decoration: none;
+    }
 }
 #logout:hover {
-    background-color: #cdcdcd;
+    color: #fff;
     font-weight: bold;
-    color:#000;
-    padding: 3px;
+    padding: 5px;
+}
+
+.articles {
+    border: 1px solid #d3d3d3;
+    padding: 5px;
+    background-color: #fff;
+        .article_content {
+            padding-top: 5px;
+            padding-left: 5%;
+        }
+
+        .article_actions{
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
 }

@@ -68,6 +68,7 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bootstrap-datetimepicker-rails (0.0.11)
     builder (3.2.4)
     byebug (11.1.0)
     capybara (3.30.0)
@@ -84,6 +85,8 @@ GEM
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.12.1-x64-mingw32)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.2)
@@ -210,8 +213,10 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.0.0.alpha3)
+  bootstrap-datetimepicker-rails
   byebug
   capybara (>= 2.15)
+  font-awesome-rails
   jbuilder (~> 2.7)
   mysql2 (>= 0.4.4)
   puma (~> 4.1)
