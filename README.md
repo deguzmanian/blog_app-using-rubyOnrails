@@ -29,3 +29,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+upon running the app
+
+type rails s (to start the server)
