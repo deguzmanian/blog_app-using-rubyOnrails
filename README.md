@@ -15,6 +15,7 @@ Things you may want to cover:
 
 
 * Database creation
+
   you can create your app with mysql database. just type rails new appnam -d mysql
   I used mysql as my database. Follow instructions here: https://www.digitalocean.com/community/tutorials/how-to-use-mysql-with-your-ruby-on-rails-application-on-ubuntu-14-04
 
