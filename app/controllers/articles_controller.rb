@@ -3,11 +3,14 @@ class ArticlesController < ApplicationController
 
     def index
         # @articles = Article.where(user_id: session[:user_id]) # allows user to see the articles they create
-        @articles = Article.all # allows the user to see all the articles saved...
+        # @articles = Article.all # allows the user to see all the articles saved...
+        @article = Article.new
+        @articles = Article.paginate(page: params[:page], per_page: 5).order('updated_at DESC')
     end
 
     def show
         @article = Article.find(params[:id])
+        @comment = @article.comments.build
     end
 
     def new
@@ -24,7 +27,7 @@ class ArticlesController < ApplicationController
         if @article.save
             redirect_to @article
         else
-            render 'new'
+            render 'index'
         end
     end
 

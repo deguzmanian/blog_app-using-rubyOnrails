@@ -18,13 +18,28 @@
 @import "font-awesome";
 
 body {
-    font-family: 'Open Sans', sans-serif; 
+    font-family: 'Courier New', 'Lucida Console', sans-serif;
     h3 {
         font-weight: bold;
     }
 
     .card-body {
         font-size: 14px;
+    }
+
+    .courier {
+        font-family: 'Courier New', 'Lucida Console', sans-serif;
+        font-weight: bold;
+    }
+
+    .logo {
+        margin-left: -9%;
+    }
+
+    .campaign-name {
+        font-family: 'Courier', cursive;
+        color: #c0c0c0;
+        margin-left: -2%;
     }
 }
 
@@ -44,14 +59,83 @@ body {
 .articles {
     border: 1px solid #d3d3d3;
     padding: 5px;
-    background-color: #fff;
-        .article_content {
-            padding-top: 5px;
-            padding-left: 5%;
+    .article_content {
+        .title {
+            font-weight: bold;
         }
+        padding-top: 5px;
+        padding-left: 5%;
+    }
 
-        .article_actions{
-            padding-left: 10px;
-            padding-bottom: 10px;
-        }
+    .article_datetime {
+        color: rgb(143, 143, 143);
+        float: right;
+    }
+
+    .article_actions{
+        padding-left: 10px;
+        padding-bottom: 10px;
+    }
+
+    .article_actions a:hover {
+        text-decoration: none;
+        color: #c0c0c0;
+    }
+}
+
+.article_add {
+    border: 1px solid #d3d3d3;
+    padding: 8px;
+}
+
+.comment-sec {
+    .comment_datetime {
+        color: rgb(143, 143, 143);
+        float: right;
+    }
+
+    .comment_actions a:hover {
+        text-decoration: none;
+        color: #c0c0c0;
+    }
+}
+
+.pagination {
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+}
+
+.pagination > * {
+    margin-right: 0.1em;
+    padding: 0.3em 0.4em;
+}
+
+.pagination a:hover {
+    background: #202020 none repeat scroll 0 0;
+    text-shadow: 1px 1px 1px #171717;
+    color: #fff;
+    text-decoration: none;
+}
+
+.pagination a:active {
+    text-shadow: none;
+}
+
+.pagination .current {
+    background: #202020 none repeat scroll 0 0;
+    color: white;
+    text-shadow: 1px 1px 1px #171717;
+}
+
+.pagination .disabled {
+    color: #C0C0C0;
+}
+
+.page_info {
+    background-color: #171a33;
+    font-size: 15px;
+    color: #C0C0C0;
+    padding: 0.04em;
+    text-align: center;
 }

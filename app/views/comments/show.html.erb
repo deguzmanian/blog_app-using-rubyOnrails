@@ -1,4 +1,4 @@
-<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+<%= form_for([@article, @comment]) do |form| %>
     <% if @comment.errors.any? %>
         <div id="error_explanation">
             <h2>
@@ -13,8 +13,8 @@
         </div>
     <% end %>
 
-    <div class="container">
-        <div class="card">
+    <div class="container-fluid">
+        <div class="card mt-4">
             <div class="card-header">
                 <h5>Edit Comment of <%= @comment.commenter%></h5>
             </div>
@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <%= form.label :commenter %><br>
-                        <%= form.text_field :commenter, class: 'form-control' %>
+                        <%= form.text_field :commenter, class: 'form-control', :readonly => true %>
                     </div>
                     <div class="col-md-12">
                         <%= form.label :body %><br>
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <%= form.submit "Submit Edit", class: "btn btn-success btn-sm" %>
+                <%= form.submit "Update", class: "btn btn-success btn-sm" %>
                 <%= link_to "Cancel", article_path(@article), class: "btn btn-danger btn-sm" %>
             </div>
         </div>

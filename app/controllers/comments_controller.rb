@@ -7,8 +7,8 @@ class CommentsController < ApplicationController
     end
 
     def edit
+        @comment = Comment.find(params[:id])
         @article = Article.find(params[:article_id])
-        @comment = @article.comments.find(params[:id])
     end
 
     def show
@@ -18,12 +18,9 @@ class CommentsController < ApplicationController
 
     def update
         @article = Article.find(params[:article_id])
-        @comment = @article.comments.find(params[:id])
-        if @comment.update(comment_params)
-            redirect_to @comment
-        else
-            render 'edit'
-        end
+        @comment = Comment.find(params[:id])
+        @comment.update_attributes(comment_params)
+        redirect_to @article
     end
 
     def destroy

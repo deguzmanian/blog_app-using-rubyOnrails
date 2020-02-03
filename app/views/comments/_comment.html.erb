@@ -1,13 +1,17 @@
 <% if comment.commenter != nil && comment.body != nil%>
     <div class="comment-sec">
-        <strong>Username:</strong>
         <%= comment.commenter %>
         <br/>
-        <strong>Comment:</strong>
         <%= comment.body %>
         <br/>
-    <%= link_to 'Edit Comment', [comment.article, comment]%> |
-    <%= link_to 'Delete Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }
-    %>
+        <div class="comment_datetime">
+            <%= comment.updated_at.to_time.strftime('%B %e at %l:%M %p') %>
+        </div>
+        <br/>
+        <div class="comment_actions">
+            <%= link_to 'Edit', [comment.article, comment]%> |
+            <%= link_to 'Delete', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }%>
+        </div>
     </div>
+    <hr>
 <% end %>

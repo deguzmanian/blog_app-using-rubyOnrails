@@ -3,7 +3,7 @@
     <h1 class="mt-4"></h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item">Dashboard</li>
-        <li class="breadcrumb-item">Articles</li>
+        <li class="breadcrumb-item"><%= link_to 'Articles', articles_path %></li>
         <li class="breadcrumb-item active">Article #<%= @article.id %></li>
     </ol>
 
@@ -24,7 +24,7 @@
         <div class="col-6 add_a_comment">
             <div class="card">
                 <div class="card-header">
-                    <h5>Add a comment</h5>
+                    <h5 class="courier">Leave a comment as <%= current_user.fname %></h5>
                 </div>
                 <div class="card-body">
                     <%= render 'comments/form' %>
@@ -34,7 +34,7 @@
         <div class="col-6 comments">
             <div class="card">
                 <div class="card-header">
-                    <h5>Comments</h5>
+                    <h5 class="courier">COMMENTS</h5>
                 </div>
                 <div class="card-body">
                     <%= render @article.comments %>

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params.require(:user).permit(:username,:password))
+    @user = User.create(params.require(:user).permit(:email,:password))
     session[:user_id] = @user.id
     @user.admin = 0
     redirect_to '/welcome'
@@ -25,6 +25,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-        params.require(:user).permit(:username, :password, :fname, :lname, :birthday, :address)
+        params.require(:user).permit(:username, :email, :password, :fname, :lname, :birthday, :address)
     end
 end

@@ -4,19 +4,40 @@
         <li class="breadcrumb-item">Dashboard</li>
         <li class="breadcrumb-item active">Articles</li>
     </ol>
-    <% @articles.each do |article| %>
-    <div class="articles">
-        <div class="article_title">
-            <strong> <%= article.title %> </strong> - <%= article.user.fname %>
+    <div class="row">
+        <div class="col-6">
+            <% @articles.each do |article| %>
+            <div class="articles">
+                <div class="article_title">
+                    <strong class="title"> <%= article.title %> </strong> - <%= article.user.fname %>
+                </div>
+                <div class="article_content">
+                    <span> <%= article.context %> </span>
+                </div>
+                <div class="article_datetime">
+                    <span> <%= article.updated_at.to_time.strftime('%B %e at %l:%M %p') %> </span>
+                </div>
+                <br/>
+                <hr>
+                <div class="article_actions inline">
+                    <%= link_to 'View Full Article', article_path(article) %> <% if current_user.id == article.user_id %>| <%= link_to 'Edit', edit_article_path(article) %> | <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %> <%end%>
+                </div>
+            </div>
+            <br/>
+            <% end %>
+            <div class="page_info">
+                <%= page_entries_info @articles %>
+            </div>
+            <div class="pagination">
+                <%= will_paginate @articles, :container => false %>
+            </div>
         </div>
-        <div class="article_content">
-            <span> <%= article.context %> </span>
-        </div>
-        <hr>
-        <div class="article_actions">
-            <%= link_to 'Show', article_path(article) %> | <%= link_to 'Edit', edit_article_path(article) %> | <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div class="col-6">
+            <div class="article_add">
+                <h5 class="courier">ADD ARTICLE</h5>
+                <hr>
+                <%= render 'form' %>
+            </div>
         </div>
     </div>
-    <br/>
-    <% end %>
 </div>
