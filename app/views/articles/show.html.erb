@@ -8,10 +8,14 @@
     </ol>
 
     <div class="col-12 text-right">
-        <%= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-success btn-sm' %>
-        <%= link_to 'Back to list', articles_path, class: 'btn btn-danger btn-sm' %>
+        <%#= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-success btn-sm' %>
     </div>
     <div class="article">
+        <%# if !flash[:notice].blank? %>   
+            <%# <div>    %>
+                <%#= flash[:notice] %>   
+            <%# </div>    %>
+        <%# end %>
         <h5>
             <strong>Title:</strong>
             <span><%= @article.title %></span>
@@ -19,12 +23,12 @@
         <strong>Text:</strong>
         <%= @article.context %>
     </div>
-    <hr>
-    <div class="row">
+    <%# <hr> %>
+    <div class="row mt-3">
         <div class="col-6 add_a_comment">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="courier">Leave a comment as <%= current_user.fname %></h5>
+                    <span>Leave a comment as <%= current_user.fname %></span>
                 </div>
                 <div class="card-body">
                     <%= render 'comments/form' %>

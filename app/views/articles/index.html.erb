@@ -12,7 +12,9 @@
                     <strong class="title"> <%= article.title %> </strong> - <%= article.user.fname %>
                 </div>
                 <div class="article_content">
-                    <span> <%= article.context %> </span>
+                    <span><%= truncate article.context, length: 50 %></span>
+                    <br/>
+                    <span><% if article.context.length >= 50 %> <%= link_to 'read more', article %> <% end %></span>
                 </div>
                 <div class="article_datetime">
                     <span> <%= article.updated_at.to_time.strftime('%B %e at %l:%M %p') %> </span>
@@ -20,7 +22,7 @@
                 <br/>
                 <hr>
                 <div class="article_actions inline">
-                    <%= link_to 'View Full Article', article_path(article) %> <% if current_user.id == article.user_id %>| <%= link_to 'Edit', edit_article_path(article) %> | <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %> <%end%>
+                    <%= link_to 'View', article_path(article) %> <% if current_user.id == article.user_id %>| <%= link_to 'Edit', edit_article_path(article) %> | <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %> <%end%>
                 </div>
             </div>
             <br/>
@@ -41,3 +43,7 @@
         </div>
     </div>
 </div>
+
+<script>
+$(".article").addClass("active");
+</script>

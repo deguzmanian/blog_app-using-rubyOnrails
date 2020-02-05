@@ -13,12 +13,47 @@
         </div>
     <% end %>
 
-    <div style="padding-top:10px">
-        <%= form.label :title %><br>
-        <%= form.text_field :title, class: "form-control"%><br>
-        <%= form.label :context %><br>
-        <%= form.text_area :context, class: "form-control"%><br>
-        <%= form.submit "Save", class: "btn btn-success btn-sm"%>
-        <%= link_to "Cancel", articles_path, class: "btn btn-danger btn-sm"%>
+    <div class="ml-3 mr-3">
+        <div class="add-article">
+            <%= form.label :title %><br>
+            <%= form.text_field :title, class: "form-control title", id: "title" %><br>
+            <%= form.label :context %><br>
+            <%= form.text_area :context, class: "form-control content", maxlength: @max_length, id: "context" %><br>
+            Valid characters left: <span class="limit-counter" id="counter" data-maximum-length="<%= @maximum_length %>"><%= @maximum_length %></span>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <%= form.submit "SAVE", class: "btn btn-success btn-sm btn-block", id: "save-article"%>
+            </div>
+            <div class="col-6">
+                <%= button_tag("CLEAR", type: 'reset', class: "btn btn-danger btn-sm btn-block", id: "clear") %>
+            </div>
+        </div>
     </div>
 <% end %>
+<script>
+$(document).ready(function() {
+    var context     = $("#context");
+    var counter     = $("#counter");
+    var max_length  = counter.data("maximum-length");
+
+    counter.text(max_length - context.val().length);
+    context.keyup(function() {
+        if ((max_length) < $("#context").val().length){
+            $(".content").addClass("overlimit");
+        }
+        counter.text(max_length - $(this).val().length);
+    });
+});
+
+$("#clear").click(function(){
+    $('#counter').text(255);
+    $(".content").removeClass("overlimit");
+});
+
+$("#save-article").click(function(){
+    if($("#title").val() === "" || $("#context").val() === ""){
+        $(".add-article .form-control").addClass("emptyfield");
+    }
+});
+</script>

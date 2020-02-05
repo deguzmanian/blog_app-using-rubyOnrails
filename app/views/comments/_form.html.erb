@@ -2,5 +2,12 @@
     <%= form.text_field :commenter, class: 'form-control', value: current_user.fname, :hidden => true %>
     <%= form.text_area :body, class: 'form-control' %>
     <br>
-    <%= form.submit "Comment", class: "btn btn-sm btn-info btn-block float-right" %>
+    <div class="row">
+        <div class="col-6">
+            <%= form.submit "COMMENT", class: "btn btn-sm btn-info btn-block" %>
+        </div>
+        <div class="col-6">
+        <%= button_tag("CLEAR", type: 'reset', class: "btn btn-danger btn-sm btn-block") %>
+        </div>
+    </div>
 <% end %>

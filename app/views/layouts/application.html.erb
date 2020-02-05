@@ -24,7 +24,7 @@
             <div class="col-2">
                 <div class="form-inline float-right">
                     <div id="logout">
-                        <i class="fa fa-sign-out"></i>&nbsp;<%= link_to 'Logout', 'logout', method: :get %>
+                        <i class="fa fa-sign-out"></i>&nbsp;<%= link_to "Log out", sessions_path, method: "delete" %>
                     </div>
                 </div>
             </div>

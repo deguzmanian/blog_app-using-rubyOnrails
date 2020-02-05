@@ -1,16 +1,43 @@
-<div class="container-fluid">
-    <h1 class="mt-4">Dashboard</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item">Dashboard</li>
-        <li class="breadcrumb-item"><%= link_to 'Articles', articles_path %></li>
-        <li class="breadcrumb-item active">Edit Article</li>
-    </ol>
-    <div class="card">
-        <div class="card-header">
-            <h4>Article #<%= @article.id %></h4>
+<%= form_with model: @article, local: true do |form| %>
+    <% if @article.errors.any? %>
+        <div id="error_explanation">
+        <h2>
+            <%= pluralize(@article.errors.count, "error") %> prohibited
+            this article from being saved:
+        </h2>
+        <ul>
+            <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
         </div>
-        <div class="card-body">
-            <%= render 'form' %>
+    <% end %>
+    <div class="container-fluid">
+        <ol class="breadcrumb mb-4 mt-4">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item"><%= link_to 'Articles', articles_path %></li>
+            <li class="breadcrumb-item active">Edit Article</li>
+        </ol>
+        <div class="card">
+            <div class="card-header">
+                <h4>Article #<%= @article.id %></h4>
+            </div>
+            <div class="card-body">
+                <%= form.label :title %><br>
+                <%= form.text_field :title, class: "form-control" %><br>
+                <%= form.label :context %><br>
+                <%= form.text_area :context, class: "form-control", maxlength: @max_length %><br>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-6">
+                        <%= form.submit "SAVE", class: "btn btn-success btn-sm btn-block"%>
+                    </div>
+                    <div class="col-6">
+                        <%= button_tag("CLEAR", type: 'reset', class: "btn btn-danger btn-sm btn-block") %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+<% end %>

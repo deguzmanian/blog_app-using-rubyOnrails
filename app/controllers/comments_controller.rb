@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     skip_before_action :authorized
+
     def create
         @article = Article.find(params[:article_id])
         @comment = @article.comments.create(comment_params)
@@ -27,7 +28,7 @@ class CommentsController < ApplicationController
         @article = Article.find(params[:article_id])
         @comment = @article.comments.find(params[:id])
         @comment.destroy
-        redirect_to article_path(@article)
+        redirect_to article_path(@article), # notice:  "Successfully deleted."
     end
 
     private

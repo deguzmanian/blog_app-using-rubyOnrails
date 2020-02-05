@@ -5,7 +5,8 @@ class ArticlesController < ApplicationController
         # @articles = Article.where(user_id: session[:user_id]) # allows user to see the articles they create
         # @articles = Article.all # allows the user to see all the articles saved...
         @article = Article.new
-        @articles = Article.paginate(page: params[:page], per_page: 5).order('updated_at DESC')
+        @articles = Article.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+        @maximum_length = Article.validators_on(:context).first.options[:maximum]
     end
 
     def show
