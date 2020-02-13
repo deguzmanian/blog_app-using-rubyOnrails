@@ -14,8 +14,8 @@
  *= require_self
  */
 @import 'bootstrap';
-@import 'bootstrap-datetimepicker';
 @import "font-awesome";
+@import 'bootstrap-datepicker';
 
 body {
     font-family: 'Courier New', 'Lucida Console', sans-serif;
@@ -52,14 +52,13 @@ body {
     }
 }
 
-#logout {
-    float: right;
+.logout {
     a {
         color:#fff;
         text-decoration: none;
     }
 }
-#logout:hover {
+.logout:hover {
     color: #fff;
     font-weight: bold;
     padding: 5px;

@@ -27,7 +27,7 @@ gem 'will_paginate', '~> 3.1.0'
 
 # bootstrap 4 for design
 gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'bootstrap-datetimepicker-rails'
+gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.1.1'
 gem "font-awesome-rails"
 
 # Use Active Storage variant
