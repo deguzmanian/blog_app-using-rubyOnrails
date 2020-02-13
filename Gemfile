@@ -26,7 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.0'
 
 # bootstrap 4 for design
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem "bootstrap", ">= 4.3.1"
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.1.1'
 gem "font-awesome-rails"
 
