@@ -17,14 +17,29 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
     if @user.update(user_params)
       redirect_to '/welcome'
     end
   end
 
+  def show_users
+    @users = User.where.not(id:session[:user_id]).paginate(page: params[:page], per_page: 10).order('lname ASC')
+  end
+
+  def set_admin_permission
+    @user = User.find(params[:id])
+    @user.update_column(:admin, 1)
+    redirect_to '/users/users_account_list'
+  end
+
+  def remove_admin_permission
+    @user = User.find(params[:id])
+    @user.update_column(:admin, 0)
+    redirect_to '/users/users_account_list'
+  end
+
   private
     def user_params
-        params.require(:user).permit(:username, :email, :password, :fname, :lname, :birthday, :address)
+      params.require(:user).permit(:username, :email, :password, :fname, :lname, :birthday, :address)
     end
 end

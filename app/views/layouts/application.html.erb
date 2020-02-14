@@ -6,6 +6,7 @@
         <title>BLOG</title>
 
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' %>
         <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
     <body class="sb-nav-fixed">
@@ -13,8 +14,8 @@
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <%= image_tag("blog.png", :alt => "BLOG") %>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fa fa-bars"></i></button>
-            <div class="navbar-nav logout ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <%= link_to fa_icon("sign-out",text:"Log out"), sessions_path, method: "delete" %>
+            <div class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0 text-white">
+                <span><%= current_user.fname %> &nbsp;|</span> &nbsp; <%= link_to fa_icon("sign-out",text:"Log out"), sessions_path, method: "delete", class: "text-white" %>
             </div>
         </nav>
         <div id="layoutSidenav">
@@ -23,13 +24,16 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Dashboard</div>
-                            <%= link_to fa_icon("home",text:"Home"), welcome_path, class: 'nav-link home'%>                            
-                            <%= link_to fa_icon("book",text:"Articles"), articles_path, class: 'nav-link article'%>                            
+                            <%= link_to fa_icon("home",text:"Home"), welcome_path, class: 'nav-link home'%>
+                            <%= link_to fa_icon("book",text:"Articles"), articles_path, class: 'nav-link article'%>
+                            <% if current_user.admin == 1 %>
+                            <div class="sb-sidenav-menu-heading">Permission</div>
+                            <%= link_to fa_icon("user",text:"Users"), show_users_account_path, class: 'nav-link users'%>
+                            <% end %>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        <%= current_user.fname ? current_user.fname : current_user.username %>
+                        <div class="small">Logged in as <%= current_user.admin == 1 ? "Admin" : "User"%></div>
                     </div>
                 </nav>
             </div>

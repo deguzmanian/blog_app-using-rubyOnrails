@@ -22,7 +22,15 @@
                 <br/>
                 <hr>
                 <div class="article_actions inline">
-                    <%= link_to 'View', article_path(article) %> <% if current_user.id == article.user_id %>| <%= link_to 'Edit', edit_article_path(article) %> | <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %> <%end%>
+                    <% if current_user.admin == 1 && current_user.id == article.user_id %>
+                        <%= link_to 'View', article_path(article) %> | <%= link_to 'Edit', edit_article_path(article) %> | <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% elsif current_user.admin == 1 && current_user.id != article.user_id %>
+                        <%= link_to 'View', article_path(article) %> | <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% elsif current_user.admin != 1 && article.user_id == current_user.id %>
+                        <%= link_to 'View', article_path(article) %> | <%= link_to 'Edit', edit_article_path(article) %>
+                    <%else%>
+                        <%= link_to 'View', article_path(article) %>
+                    <%end%>
                 </div>
             </div>
             <br/>

@@ -14,8 +14,7 @@
     <% end %>
 
     <div class="container-fluid">
-        <h1 class="mt-4"></h1>
-        <ol class="breadcrumb mb-4">
+        <ol class="breadcrumb mb-4 mt-4">
             <li class="breadcrumb-item">Dashboard</li>
             <li class="breadcrumb-item active">Update Information</li>
         </ol>
@@ -44,7 +43,7 @@
                     </div>
                     <div class="col-md-6">
                         <%= form.label :birthday %><br>
-                        <%= form.date_select :birthday, {order: [:month, :day, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100} %>
+                        <%= form.text_field :birthday, class: 'form-control' %>
                     </div>
                     <div class="col-md-6">
                         <%= form.label :address %><br>
@@ -62,11 +61,8 @@
 
 <script>
 $(document).ready(function(){
-    $("#user_birthday").click(function(){
-        console.log("yep");
+    $('#user_birthday').datepicker({
+        dateFormat: "mm/dd/yy"
     });
-    // $('#user_birthday').datepicker({
-    //     dateFormat: "dd/mm/yy"
-    // });
 });
 </script>

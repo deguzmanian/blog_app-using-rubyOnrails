@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <ol class="breadcrumb mb-4 mt-4">
+        <li class="breadcrumb-item">Dashboard</li>
+        <li class="breadcrumb-item">Accounts</li>
+        <li class="breadcrumb-item active">Users</li>
+    </ol>
+    <table class="table table-responsive table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width:400px;">Name</th>
+                <th style="width:400px;">Admin</th>
+                <th style="width:400px;">Actions</th>
+            <tr>
+        </thead>
+        <tbody>
+            <% @users.each do |u| %>
+            <tr>
+                <td><%= u.fname%> <%= u.lname%></td>
+                <td><%= u.admin==1 ? 'Yes' : 'No'%></td>
+                <td>
+                    <% if u.admin != 1 %>
+                        <%= link_to "Set Permission", set_admin_permission_path(u.id), method: "post", class: "btn btn-info btn-sm" %>
+                    <% else %>
+                        <%= link_to "Remove Permission", remove_admin_permission_path(u.id), method: "post",class: "btn btn-danger btn-sm"%>
+                    <% end %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="page_info">
+        <%= page_entries_info @users %>
+    </div>
+    <div class="pagination">
+        <%= will_paginate @users, :container => false %>
+    </div>
+</div>
+<script>
+$(".users").addClass("active");
+</script>
