@@ -27,8 +27,8 @@
                             <%= link_to fa_icon("home",text:"Home"), welcome_path, class: 'nav-link home'%>
                             <%= link_to fa_icon("book",text:"Articles"), articles_path, class: 'nav-link article'%>
                             <% if current_user.admin == 1 %>
-                            <div class="sb-sidenav-menu-heading">Permission</div>
-                            <%= link_to fa_icon("user",text:"Users"), show_users_account_path, class: 'nav-link users'%>
+                            <div class="sb-sidenav-menu-heading">USERS</div>
+                            <%= link_to fa_icon("user",text:"Set Permission"), show_users_account_path, class: 'nav-link users'%>
                             <% end %>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-    belongs_to :user
+    belongs_to :user, :optional => true
     delegate   :username, to: :user, prefix: true
 
     has_many   :comments, dependent: :destroy

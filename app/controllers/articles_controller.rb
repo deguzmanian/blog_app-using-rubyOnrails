@@ -23,10 +23,11 @@ class ArticlesController < ApplicationController
     end
 
     def create
+        @articles = Article.paginate(page: params[:page], per_page: 5).order('created_at DESC')
         @article = Article.new(article_params)
         @article.user_id = session[:user_id]
         if @article.save
-            redirect_to @article
+            redirect_to '/articles'
         else
             render 'index'
         end

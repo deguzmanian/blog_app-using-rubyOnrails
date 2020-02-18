@@ -10,10 +10,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-6">
-                        <h5 class="courier">USER DETAILS</h5>
+                            <h5 class="courier">USER DETAILS</h5>
                         </div>
                         <div class="col-6 text-right">
-                            <% if current_user.lname != nil && current_user.fname != nil && current_user.birthday != nil && current_user.address != nil %>
+                            <% if current_user.lname != nil && current_user.fname != nil %>
                                 <%= link_to 'Edit Profile', edit_user_path(current_user.id), class: "btn btn-info btn-sm"%>
                             <% end %>                
                         </div>
@@ -25,25 +25,12 @@
                     <% else %>
                         <label>Name:</label> <%= current_user.lname%>, <%= current_user.fname%><br/>
                         <label>Email Address: </label> <%= current_user.email? ? current_user.email : "" %><br/>
-                        <label>Birthday: </label> <%= current_user.birthday.strftime("%B %d, %Y") %><br/>
+                        <label>Birthday: </label> <%= current_user.birthday ? current_user.birthday.strftime("%B %d, %Y") : "" %><br/>
                         <label>Address: </label> <%= current_user.address %>
                     <% end %>
                 </div>
             </div>
         </div>
-        <%# <div class="col-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="courier">COMPANY DETAILS</h5>
-                    <div class="text-right">
-
-                    </div>
-                </div>
-                <div class="card-body">
-                    <label></label>
-                </div>
-            </div>
-        </div> %>
     </div>
 </div>
 
